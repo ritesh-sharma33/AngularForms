@@ -11,11 +11,16 @@
   <div *ngIf="myForm.controls.email.hasError('pattern')">
     Oops, please enter a valid email!
   </div>
-  
+
   <input type="text" formControlName="message" placeholder="Your message">
-  <div *ngIf="myForm.controls.message.errors.minlength">
+  <div *ngIf="myForm.controls.message.hasError('minLength')">
     Oops, Message is too short to send
   </div>
 
   <button type="submit" [disabled]="myForm.invalid">Send</button>
+
+  <br>
+  <div>
+    {{formattedMessage}}
+  </div>
 </form>

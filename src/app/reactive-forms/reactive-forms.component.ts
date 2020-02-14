@@ -8,6 +8,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 export class ReactiveFormsComponent implements OnInit {
   myForm: FormGroup;
+  formattedMessage: string;
 
   constructor(private fb: FormBuilder) { }
 
@@ -22,13 +23,31 @@ export class ReactiveFormsComponent implements OnInit {
     //   message: new FormControl('')
     // });
 
-    // The below one is the FormBuilder approach
+    // The below one is the FormBuilder approach with validation
     
+    // this.myForm = this.fb.group({
+    //   name: ["Ritesh", Validators.required],
+    //   email: ["", [Validators.required, Validators.pattern('[a-z0-9.@]*')]],
+    //   message: ["", [Validators.required, Validators.minLength(15)]]
+    // });
+
     this.myForm = this.fb.group({
-      name: ["Ritesh", Validators.required],
-      email: ["", [Validators.required, Validators.pattern('[a-z0-9.@]*')]],
-      message: ["", [Validators.required, Validators.minLength(15)]]
+      name: '',
+      email: '',
+      message: ''
     });
+
+    this.onChanges();
+  }
+
+  onChanges(): void {
+    this.myForm.valueChanges.subscribe(val => {
+      this.formattedMessage = 
+      `Hello,
+        My name is ${val.name} and my email is ${val.email},
+        I would like to tell you that ${val.message}.
+      `
+    })
   }
 
   onSubmit(form: FormGroup) {
