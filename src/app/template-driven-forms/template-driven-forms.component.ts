@@ -21,6 +21,10 @@ export class TemplateDrivenFormsComponent implements OnInit {
 
   }
 
+  newHero() {
+    this.model = new Hero(42, '', '', '');
+  }
+
   get diagnostic() { return JSON.stringify(this.model); }
 
 }
