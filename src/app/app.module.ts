@@ -8,12 +8,16 @@ import { AppComponent } from './app.component';
 
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { TemplateDrivenFormsComponent } from './template-driven-forms/template-driven-forms.component';
+import { DynamicFormsComponent } from './dynamic-forms/dynamic-forms.component';
+import { DynamicFormQuestionComponent } from './dynamic-forms/dynamic-form-question/dynamic-form-question.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ReactiveFormsComponent,
-    TemplateDrivenFormsComponent
+    TemplateDrivenFormsComponent,
+    DynamicFormsComponent,
+    DynamicFormQuestionComponent
   ],
   imports: [
     BrowserModule,
